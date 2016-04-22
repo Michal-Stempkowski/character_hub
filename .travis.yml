@@ -3,6 +3,4 @@ jdk:
   - oraclejdk8
 
 script:
-  - gradle cleanIdea
-  - gradle idea
-  - gradle test
+  - ./gradlew test

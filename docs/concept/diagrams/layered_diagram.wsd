@@ -1,0 +1,17 @@
+@startuml
+
+node business_object
+node pickle
+component view_model_part
+component view_model
+
+artifact sheet
+
+view_model --o view_model_part
+
+view_model_part --* business_object
+
+business_object +--+ pickle
+pickle +--+ sheet
+
+@enduml

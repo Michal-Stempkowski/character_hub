@@ -1,0 +1,32 @@
+@startuml
+
+cloud app_bus {
+    storage business_core
+    storage events
+}
+
+folder datalayer {
+    storage sheet_fetcher
+    storage picture_fetcher
+}
+
+node template_editor
+folder visualizer {
+    storage main_view
+    storage template_view
+}
+
+folder synchronizer {
+    storage custom_protocol_synchronizer
+}
+
+database filesystem
+
+app_bus -0)- "0..1" datalayer
+app_bus -0)-  "0..*" template_editor
+app_bus -0)- "0..*" visualizer
+app_bus -0)- "0..*" synchronizer
+
+datalayer --> filesystem
+
+@enduml

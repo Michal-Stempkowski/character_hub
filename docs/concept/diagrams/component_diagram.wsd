@@ -1,0 +1,48 @@
+@startuml
+
+component menu
+component template_editor
+component requirements_editor
+component defaults_editor
+component face_editor
+component character_editor
+component backup_manager
+
+artifact template.temsheet
+artifact requirements.reqsheet
+artifact defaults.defsheet
+artifact face.facsheet
+artifact character_sheet.sheet
+artifact backup_sheet.sheet.bck
+
+requirements.reqsheet ..* template.temsheet
+defaults.defsheet ..* template.temsheet
+face.facsheet ..* template.temsheet
+
+character_sheet.sheet ..* template.temsheet
+character_sheet.sheet ..* requirements.reqsheet
+character_sheet.sheet ..* defaults.defsheet
+character_sheet.sheet ..* face.facsheet
+character_sheet.sheet --> backup_sheet.sheet.bck
+
+character_editor --+ character_sheet.sheet
+
+face_editor --+ face.facsheet
+
+defaults_editor --+ defaults.defsheet
+
+requirements_editor --+ requirements.reqsheet
+
+template_editor --+ template.temsheet
+
+backup_manager --+ backup_sheet.sheet.bck
+
+menu --> character_editor
+menu --> face_editor
+menu --> defaults_editor
+menu --> requirements_editor
+menu --> template_editor
+menu --> backup_manager
+
+
+@enduml

@@ -1,0 +1,124 @@
+BASIC PROJECT IDEAS:
+- creating character sheet editor, that is universal (allows creating sheets for different systems), easy to use and allows easy sharing;
+- system must be distributed - all charachter sheets should be easily sharable;
+    @IDEA - SHARING VIA GITHUB (SVG) - use github in order to make sharing automatic;
+        # It requires storing those characer sheets in easily controlled format (for example via YAML);
+        # Good idea - transform them into some kind of tree map stored inside of YAML or XML, or whatever;
+        # Allow purging github history in order to avoid quickly growing repositories;
+        # Commiting/pushing must be transparent for the user - it should be done in the background so no user could see it;
+        # What to do on merge conflict?
+            $ I believe taking owner's changes is wise course of action
+        # How to share repos?
+            $ Repos are normal .git repos shared via anything - use pull/push config;
+    @IDEA - SHARING VIA GOOGLE DOCS (SVGD):
+        # Requires more investigation;
+    @IDEA - CUSTOM DISTRIBUTED SYNCHRONIZATION (CDS) - implement custom synchronization mechanism + protocol for distributed client system (probably only naming subscriber server).
+
+- components:
+    @ character sheet template editor - allows creating logic for character sheet;
+    @ default character sheet filler - allows creation of default sheet implementation + restrictions for data;
+    @ character sheet editor - allows edition of character sheet + view only
+    @ importer - allows importing data for different things (campaigns, worlds, settings etc. - also supports different versions)
+    @ exporter - allows exporting character sheet in many popular formats and ways
+    @ logs viewer - usefull for developers (sth like ProntoTerminator)
+- each window shall have state of its own (possible multiple windows opened):
+    @IDEA
+@IDEA - SWEEP UNDER THE CARPET - allows to sweep error under the carpet. It is still visible if you click "look under the carpet" - much better than disabling those errors :)
+@IDEA - .reqsheet role to be reduced (use boost::optional-sort-of-thing for inappriopriate values in .temsheet - + autohandling and showing prime reason for it + optional printing of reason somewhere
+@IDEA - changed flow - .temsheet -> .temsheet -> .reqsheet -> .facsheet -> .sheet <-> .datsheet
+- Folder architecture:
+    data:
+        app_version.data
+        <system>:
+            <system>_version.data
+            <world>:
+                <world>_version.data
+                <campaign>:
+                    <campaign>_version.data
+                    settings:
+                        <config files for sharing etc.>
+                    templates:
+                        .git
+                        <templates>
+                        <field_requirements>
+                        <default_values>
+                        <faces - sheet design>
+                        <pictures>
+                        <media - *.wav, etc>
+                    characters:
+                        .git
+                        <character>:
+                            <data sheets>
+                            <sheets - files that allows to connect everything together>
+                            media:
+                                <pictures>
+                                <sounds>
+                                <videos?>
+                    backup:
+                        <bare_sheet_copies - making a copy from time to time>
+                    logs:
+                        <log_files>
+    output:
+        <directory for easy access for files generated during execution>
+- Example folder architecture:
+    data:
+        app_version.data
+        dnd_3_0_0:
+            dnd_3_0_0_version.data
+            equarion_1_0_0:
+                equarion_1_0_0_version.data
+                kampania_dla_zlych:
+                    kampania_dla_zlych_version.data
+                    settings:
+                        github.data
+                        collaborators.data
+                        settings.data
+                    templates:
+                        .git
+                        standard_sheet.temsheet
+                        standard_sheet.reqsheet
+                        standard_sheet.defsheet
+                        standard_sheet.facsheet
+                        companion.temsheet
+                        companion.reqsheet
+                        companion.defsheet
+                        companion.facsheet
+                        mount.tsheet
+                        mount.reqsheet
+                        mount.defsheet
+                        mount.facsheet
+                        sershe.png
+                        brego.png
+                        pele.png
+                        czajnik.png
+                        siodlo.png
+                        chuje_muje_dzikie_weze.wav
+                        zajebisty_swing.avi
+                    characters:
+                        .git
+                        sershe.datsheet
+                        sershe.sheet
+                        pele.datsheet
+                        pele.sheet
+                        brego.datsheet
+                        brego.sheet
+                    backup:
+                        sershe_1.sheet.bck
+                        sershe_2.sheet.bck
+                        sershe_3.sheet.bck
+                        brego_1.sheet.bck
+                        brego_2.sheet.bck
+                        brego_3.sheet.bck
+                        pele_1.sheet.bck
+                    logs:
+                        sershe.log
+                        pele.log
+                        brego.log
+                        error.log
+                        wrn.log
+                        debug.log
+- duirng each creation (template,, face, default, requirements) there are two steps - staging step and deploy step. During staging step you define new type of formula. During deploy step you add those formulas to character sheet having already redy most of values (for example you make a recipe for a skill, and after placing it on character sheet you must only fill in atribute type and name);
+- repeated fields?;
+- exporting character sheets to one of many formats (pdf, png, etc.);
+- use bus architecture, where receivers subscribe for special groups - should reduce ammount of calculations required;
+

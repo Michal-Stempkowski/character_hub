@@ -1,2 +1,23 @@
 apply plugin: 'idea'
 apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.+'
+}
+
+sourceSets {
+    unitTest {
+        java.srcDir file('src/unit')
+    }
+}
+
+task unitTest(type: Test) {
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+}
+
+check.dependsOn unitTest

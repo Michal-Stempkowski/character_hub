@@ -16,8 +16,8 @@ sourceSets {
 }
 
 task unitTest(type: Test) {
-    testClassesDir = sourceSets.integrationTest.output.classesDir
-    classpath = sourceSets.integrationTest.runtimeClasspath
+    testClassesDir = sourceSets.unitTest.output.classesDir
+    classpath = sourceSets.unitTest.runtimeClasspath
 }
 
 check.dependsOn unitTest

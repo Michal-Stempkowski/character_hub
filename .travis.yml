@@ -2,5 +2,7 @@ language: java
 jdk:
   - oraclejdk8
 
-script: gradle cleanIdea
-script: gradle idea
+script:
+  - gradle cleanIdea
+  - gradle idea
+  - gradle test

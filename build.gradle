@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.apache.commons:commons-lang3:3.3.2'
+    compile 'org.apache.commons:commons-lang3:3+'
     testCompile 'junit:junit:4.+'
 }
 

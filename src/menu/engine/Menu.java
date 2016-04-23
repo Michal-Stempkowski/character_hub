@@ -1,7 +1,10 @@
 package menu.engine;
 
+import core.events.Event;
+
 /**
  * Interface for menu.
  */
-public interface Menu {
+interface Menu {
+    Event performPreClose();
 }

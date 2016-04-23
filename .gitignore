@@ -1,3 +1,5 @@
 docs/concept/diagrams/*.png
 docs/generated
 out
+.gradle
+build

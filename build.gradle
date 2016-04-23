@@ -1,23 +1,36 @@
 apply plugin: 'idea'
 apply plugin: 'java'
+archivesBaseName = "character_hub"
+version = "0.0.0"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    compile 'org.apache.commons:commons-lang3:3.3.2'
     testCompile 'junit:junit:4.+'
 }
 
 sourceSets {
-    unitTest {
-        java.srcDir file('src/unit')
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+    test {
+        java {
+            srcDir 'unit'
+        }
     }
 }
 
-task unitTest(type: Test) {
-    testClassesDir = sourceSets.unitTest.output.classesDir
-    classpath = sourceSets.unitTest.runtimeClasspath
+test {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut"
+        showExceptions true
+        exceptionFormat "full"
+        showCauses true
+        showStackTraces true
+    }
 }
-
-check.dependsOn unitTest

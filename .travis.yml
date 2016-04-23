@@ -3,4 +3,5 @@ jdk:
   - oraclejdk8
 
 script:
-  - gradle unitTest
+  - gradle clean
+  - gradle build

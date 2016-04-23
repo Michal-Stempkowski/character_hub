@@ -1,5 +1,7 @@
 apply plugin: 'idea'
 apply plugin: 'java'
+apply plugin: 'jacoco'
+
 archivesBaseName = "character_hub"
 version = "0.0.0"
 
@@ -34,3 +36,13 @@ test {
         showStackTraces true
     }
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+    sourceDirectories = files(['src'])
+}
+
+check.dependsOn jacocoTestReport

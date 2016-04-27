@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/character_hub.iml" filepath="$PROJECT_DIR$/character_hub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/character_hub.iml" filepath="$PROJECT_DIR$/.idea/modules/character_hub.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/character_hub_main.iml" filepath="$PROJECT_DIR$/.idea/modules/character_hub_main.iml" group="character_hub" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/character_hub_test.iml" filepath="$PROJECT_DIR$/.idea/modules/character_hub_test.iml" group="character_hub" />
     </modules>
   </component>
 </project>

@@ -1,8 +1,6 @@
 package menu.engine;
 
 import core.events.Event;
-import menu.api.EventType;
-import menu.api.MenuEvent;
 import menu.api.PostCloseEvent;
 
 /**

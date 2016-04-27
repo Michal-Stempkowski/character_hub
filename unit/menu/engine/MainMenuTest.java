@@ -10,6 +10,8 @@ import static org.junit.Assert.assertThat;
 
 public class MainMenuTest {
 
+    private Menu uut = new MainMenu();
+
     @Test
     public final void shouldHaveProperNaming() throws Exception {
         assertThat(uut.toString(), is(equalTo("MainMenu instance")));
@@ -20,6 +22,4 @@ public class MainMenuTest {
         Event result = uut.performPreClose();
         assertThat(result.eventType, is(equalTo(EventType.POST_CLOSE.id)));
     }
-
-    private Menu uut = new MainMenu();
 }

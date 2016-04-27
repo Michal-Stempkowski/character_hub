@@ -8,9 +8,9 @@ public enum EventType {
     POST_CLOSE(1),
     MENU_CHANGED(2);
 
+    public final int id;
+
     EventType(int id) {
         this.id = id;
     }
-
-    public final int id;
 }

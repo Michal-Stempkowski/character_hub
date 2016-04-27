@@ -10,7 +10,7 @@ import static org.mockito.Mockito.verify;
  */
 public class DependenciesTest {
     @Test
-    public void mockito_dependency_check() throws Exception {
+    public void mockitoDependencyCheck() throws Exception {
         List mockedList = mock(List.class);
 
         mockedList.add("one");

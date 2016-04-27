@@ -1,5 +1,6 @@
 package core.events;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -20,19 +21,22 @@ public class EventDispatcherTest {
     public ExpectedException thrown = ExpectedException.none();
 
     private static final int eventType = 0;
-    private static final int domain = 0xBABE;
-    private static final int targetDomains = 0xBABE;
 
     private Event caughtEvent = null;
+    private EventDispatcher uut;
 
     private Consumer<Event> makeCallback() {
         return (event) -> caughtEvent = event;
     }
 
+    @Before
+    public void setUp() throws Exception {
+        uut = new EventDispatcher();
+    }
+
     @Test
-    public void should_be_able_to_register_new_listener() throws Exception {
+    public void shouldBeAbleToRegisterNewListener() throws Exception {
         // Given:
-        EventDispatcher uut = new EventDispatcher();
         uut.registerListener(eventType, makeCallback());
         Event e = new Event(eventType);
 
@@ -44,9 +48,8 @@ public class EventDispatcherTest {
     }
 
     @Test
-    public void should_be_able_to_unregister_listener() throws Exception {
+    public void shouldBeAbleToUnregisterListener() throws Exception {
         // Given:
-        EventDispatcher uut = new EventDispatcher();
         EventConnection conn = uut.registerListener(eventType, makeCallback());
         Event e = new Event(eventType);
         uut.unregisterListener(conn);
@@ -59,9 +62,8 @@ public class EventDispatcherTest {
     }
 
     @Test
-    public void unregister_not_existing_connection__exception_is_raised() throws Exception {
+    public void onUnregisterNotExistingConnectionExceptionIsRaised() throws Exception {
         // Given:
-        EventDispatcher uut = new EventDispatcher();
         EventConnection conn = new EventConnection(eventType, makeCallback());
         thrown.expect(NoSuchElementException.class);
         // When/Then:
@@ -69,9 +71,8 @@ public class EventDispatcherTest {
     }
 
     @Test
-    public void unregister_not_existing_connection__exception_is_raised__even_if_there_is_another() throws Exception {
+    public void onUnregisterNotExistingConnectionExceptionIsRaisedEvenIfThereIsAnother() throws Exception {
         // Given:
-        EventDispatcher uut = new EventDispatcher();
         uut.registerListener(eventType, makeCallback());
         EventConnection conn = new EventConnection(eventType, makeCallback());
         thrown.expect(NoSuchElementException.class);

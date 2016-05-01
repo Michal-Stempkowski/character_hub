@@ -7,6 +7,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -24,6 +25,7 @@ public class DependenciesTest {
 
         verify(mockedList).add("one");
         verify(mockedList).clear();
+        assertTrue(true);
     }
 
 }
